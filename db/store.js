@@ -1,6 +1,5 @@
 const fs = require("fs");
 const util = require("util");
-const {v4 : uuidv4} = require("uuid");
 const readFile = util.promisify(fs.readFile)
 const writeFile = util.promisify(fs.writeFile)
 
@@ -31,7 +30,7 @@ addNote(note){
     if (!title || !text){
         throw new Error("Please Enter Input")
     }
-    const newNote = {title, text};
+    const newNote = {title, text, id};
     return this.getNote().then((note) => [...note, newNote])
     .then((updatedNote) => this.write(updatedNote))
     .then(() => newNote)
