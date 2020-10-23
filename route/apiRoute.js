@@ -4,6 +4,14 @@ const router = require("express").Router();
 
 router.get("/note", (req,res)=>{
     store.getNote().then((note) => res.json(note))
-});
+})
+
+router.post("/store", (req, res) => {
+    note.addNote(req.body).then((note) => res.json(note))
+})
+
+router.delete("/store/:id", (req, res) => {
+    note.deleteNote(req.params).then((note) => res.json(note))
+})
 
 module.exports = router; 
