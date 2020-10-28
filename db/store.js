@@ -12,15 +12,15 @@ class Store{
     write(note){
         return writeFile("db/db.json", JSON.stringify(note))
     }
-    getNote(){
-        return this.read().then((note)=> {
-            let newNote
+    getNotes(){
+        return this.read().then((notes)=> {
+            let parsedNotes
             try {
-                newNote = [].concat(JSON.parse(note))
+                parsedNotes = [].concat(JSON.stringify(notes))
             } catch (error) {
-                newNote = []
+                parsedNotes = []
             }
-            return newNote
+            return parsedNotes
         })
     }
 
